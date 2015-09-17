@@ -1,16 +1,22 @@
 function reduce(arr, fn, initial) {
 
-    /*
-    if (!items.length) return []             // end condition
-    var head = items[0]                      // item to operate on
-    head = head.toUpperCase()                // perform action
-    var tail = items.slice(1)                // next
-    return [head].concat(toUpperArray(tail)) // recursive step
-    */
+    if (arr.length == 0) return initial; // end condition
 
-    console.log(arr);
-    console.log(fn);
-    console.log(initial);
+    // recursive step
+    return reduce(
+
+        // use a copy of arr and remove the first item from the copy
+        arr.slice(1),
+
+        // passing the reduce logic function through to the next recursive call.
+        fn,
+
+        // calling the fn with the initial (which is always the return of the fn or an empty array in the first step)
+        // and the first item from the input array of the current step
+        fn(initial, arr[0])
+
+    );
+
 }
 
 module.exports = reduce;
