@@ -11,3 +11,16 @@
 //
 // Function.prototype.call === Function.call
 module.exports = Function.call.bind(Array.prototype.slice);
+
+
+/*
+ Try this to understand the solution:
+
+ - Function.call executes the function at this.
+ - bind allows us to set the value at this for any function, including call.
+ - Array.prototype.slice is the function we want to set the this to.
+ - arguments passed to Function.call are passed as regular comma separated arguments.
+ - bind gives us back a new function. arguments passed to this new function will be passed through transparently to the function that was bound (in this case Function.call)
+
+ Source: https://github.com/nodeschool/discussions/issues/172#issuecomment-33105032
+*/
